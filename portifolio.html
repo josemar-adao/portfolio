@@ -1,0 +1,554 @@
+<html><head><base href=""><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio</title>
+
+<style>
+:root {
+  --primary: #0a192f;
+  --secondary: #64ffda;
+  --text: #8892b0;
+  --light: #ccd6f6;
+}
+
+
+
+
+* O modal fica oculto inicialmente */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9); /* Fundo escuro */
+}
+
+/* A imagem no modal */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* O botão de fechar (X) */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Certificados */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.certificate-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+}
+
+.certificate-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.certificate-name {
+  color: var(--light);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.certificate-issuer {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fira Code', monospace;
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+nav {
+  padding: 1.5rem 0;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(10, 25, 47, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--secondary);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--secondary);
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content h1 {
+  color: var(--light);
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+  color: var(--secondary);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-content p {
+  max-width: 990px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: rgba(100, 255, 218, 0.1);
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  color: var(--light);
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skill-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-card h3 {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.experience-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+  border-left: 2px solid var(--secondary);
+}
+
+.timeline-item h3 {
+  color: var(--light);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item .company {
+  color: var(--secondary);
+  margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+</style>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+<nav>
+  <div class="container nav-content">
+    <div class="logo">&lt;/&gt;</div>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#habilidades">Habilidades</a>
+	  <a href="#certificados">Certificados</a>
+	  <a href="#projetos">Projetos</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<section id="Sobre" class="section">
+  <div class="container hero-content fade-in">
+
+	<h1>Olá, eu sou Josemar Adão</h1>
+    <h2>Consultor de Infraestrutura & Aplicações</h2>
+    <p>Especialista em soluções de infraestrutura de TI com mais de 9 anos de experiência em implementação, otimização e gestão de ambientes complexos.</p>
+    <p>Possuo habilidades em Cloud Computing, datacenters e gestão de hypervisors como Hyper-V, ESXi e XenServer. Backup com Veeam e Veritas, garantindo a integridade e a proteção dos dados.</p>
+	<p>Gestão de firewalls como Fortigate, Sophos, Cisco ASA, Palo Alto, OPNSense, pfSense e Kerio Control, assegurando a segurança da infraestrutura de rede.</p>
+	<p>Monitoramento de rede com PRTG e Zabbix, garantindo a disponibilidade e o desempenho dos serviços bem como a gestão de inventários de TI com System Center, OSC Inventory, Spiceworks, Lansweeper, e PDQ Inventory.</p>
+	<a href="#contato" class="btn">Entre em contato</a>
+  </div>
+</section>
+
+<section id="habilidades" class="section">
+  <div class="container">
+    <h2 class="section-title">Habilidades Técnicas</h2>
+    <div class="skills-grid">
+      <div class="skill-card fade-in">
+        <h3><i class="fas fa-cloud"></i> Cloud Computing</h3>
+        <p>AWS, Azure, Google Cloud Platform, arquitetura em nuvem, migração de aplicações</p>
+      </div>
+      <div class="skill-card fade-in">
+        <h3><i class="fas fa-network-wired"></i> Infraestrutura</h3>
+        <p>Virtualização, containers, Kubernetes, Docker, redes, segurança</p>
+      </div>
+      <div class="skill-card fade-in">
+        <h3><i class="fas fa-code-branch"></i> DevOps / Redes</h3>
+        <p>Automação, monitoramento, TCP/IP, VLANs, QoS, VPNs, roteamento estático </p>
+      </div>
+      <div class="skill-card fade-in">
+        <h3><i class="fas fa-shield-alt"></i> Segurança</h3>
+        <p>Cybersegurança, compliance, auditorias, gestão de riscos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="certificados" class="section">
+  <div class="container">
+    <h2 class="section-title">Certificações e Treinamentos</h2>
+    <div class="certificates-grid">
+
+    <div class="certificate-card fade-in">
+    <img class="certificate-thumb" src="Certificados/1.jpg" alt="Microsoft Azure Administrator" width="147" height="100" onclick="openModal(this.src)">
+	<img class="certificate-thumb" src="Certificados/2.jpg" alt="Microsoft Azure Administrator" width="147" height="100" onclick="openModal(this.src)">
+    <img class="certificate-thumb" src="Certificados/3.jpg" alt="Microsoft Azure Administrator" width="147" height="100" onclick="openModal(this.src)">
+	<img class="certificate-thumb" src="Certificados/4.jpg" alt="Microsoft Azure Administrator" width="147" height="100" onclick="openModal(this.src)">
+    <img class="certificate-thumb" src="Certificados/5.jpg" alt="Microsoft Azure Administrator" width="147" height="100" onclick="openModal(this.src)">
+	<img class="certificate-thumb" src="Certificados/6.jpg" alt="Microsoft Azure Administrator" width="147" height="100" onclick="openModal(this.src)">
+    <img class="certificate-thumb" src="Certificados/8.jpg" alt="Microsoft Azure Administrator" width="147" height="100" onclick="openModal(this.src)">
+	<img class="certificate-thumb" src="FTNT.jpg" alt="Microsoft Azure Administrator" width="150" height="100" onclick="openModal(this.src)">
+	<img class="certificate-thumb" src="FTNT.jpg" alt="Microsoft Azure Administrator" width="150" height="100" onclick="openModal(this.src)">
+	<img class="certificate-thumb" src="FTNT.jpg" alt="Microsoft Azure Administrator" width="150" height="100" onclick="openModal(this.src)">		
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Modal -->
+<div id="imageModal" class="modal" style="display:none;">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+
+
+
+
+
+
+<section id="projetos" class="section">
+  <div class="container">
+    <h2 class="section-title">Projetos Realizados</h2>
+    <div class="certificates-grid">
+	
+	
+      <div class="certificate-card fade-in">
+        <img src="logos/recredit logo.png" alt="Recredit Logo" class="certificate-logo">
+        <h3 class="certificate-name">Recredit</h3>
+        <p class="certificate-issuer">Restruturação e reorganização dos cabos de rede nos bastidores, etiquetação de cada cabo com informações como o nome do dispositivo/área que ele conecta.</p>
+
+      </div>
+
+      <div class="certificate-card fade-in">
+        <img src="logos/elisal icon.png" alt="Elisal Logo" class="certificate-logo">
+        <h3 class="certificate-name">Elisal</h3>
+        <p class="certificate-issuer">Restruturação da infraestrutura de rede e realocação do datacenter principal, a fim de otimizar o desempenho e implementar novas dedidas de segurança.</p>
+
+      </div>
+
+      <div class="certificate-card fade-in">
+        <img src="logos/at logo.png" alt="Terraform Logo" class="certificate-logo">
+        <h3 class="certificate-name">Angola Telecom</h3>
+        <p class="certificate-issuer">Migração da firewall fortigate para uma solução open source (pfsense), instalação, configuração de mail-server e formação aos técnicos locais.</p>
+
+      </div>	    
+	  
+	  <div class="certificate-card fade-in">
+        <img src="logos/trato icon.png" alt="Tratolixo Logo" class="certificate-logo">
+        <h3 class="certificate-name">Tratolixo</h3>
+        <p class="certificate-issuer">Configuração e-mail e definir políticas de segurança para proteger contra spam, phishing e outras ameaças. Realizar inventários de ativos de TI, incluindo hardware, software e configurações de rede.</p>
+
+      </div>
+
+      <div class="certificate-card fade-in">
+        <img src="logos/electrao icon.png" alt="Electrão Logo" class="certificate-logo">
+        <h3 class="certificate-name">Electrão</h3>
+        <p class="certificate-issuer">Gestão do Active Directory e todos os objectos que nele contêm. Instalação física e configuração de computadores, incluindo a montagem de hardware, instalação de sistemas operacionais e softwares essenciais</p>
+
+      </div>
+
+      <div class="certificate-card fade-in">
+        <img src="logos/Flag_of_MPLA.svg.png" alt="MPLA Logo" class="certificate-logo">
+        <h3 class="certificate-name">MPLA Sede</h3>
+        <p class="certificate-issuer">Foram implementadas as mudanças planejadas, incluindo a atualização de hardware e software, a reestruturação de endereços IP, a mudança de topologia de rede e a implementação de medidas de segurança com uma firewall Fire Power.</p>
+
+      </div>
+	  
+	  <div class="certificate-card fade-in">
+        <img src="logos/refriango icon.png" alt="Refriango Logo" class="certificate-logo">
+        <h3 class="certificate-name">Refriango (Grupo Nuvi)</h3>
+        <p class="certificate-issuer">Administrador das plataformas Azure, Microsoft 365, VMware, Hyper-v, Fortigate. Incluindo a manutenção de permissões de GPOs e desenvolvimento da documentação para uso futuro de TI.</p>
+
+      </div>
+	  
+	  <div class="certificate-card fade-in">
+        <img src="logos/kinda icon.png"Kinda Logo" class="certificate-logo">
+        <h3 class="certificate-name">Kinda Home (Grupo Nuvi)</h3>
+        <p class="certificate-issuer">Gestão e configuração avançada de máquinas virtuais para venda. Isso inclui serviços críticos como DHCP, DNS e VPNs para garantir a estabilidade e segurança das máquinas virtuais.</p>
+
+      </div>  	  
+	  
+	  <div class="certificate-card fade-in">
+        <img src="logos/nuvibrands icon.png" alt="Terraform Logo" class="certificate-logo">
+        <h3 class="certificate-name">Reviva (Grupo Nuvi)</h3>
+        <p class="certificate-issuer">Executar configurações avançadas de Networking em switches e routers, incluindo Routing , Vlan, UDP, Trunk ports, Port states e solucionar problemas de TCP/IP e protocolos de rede relacionados.</p>
+
+      </div>  	  
+	  
+	  <div class="certificate-card fade-in">
+        <img src="logos/movicel icon.png" alt="Terraform Logo" class="certificate-logo">
+        <h3 class="certificate-name">Movicel</h3>
+        <p class="certificate-issuer">Aplicação de patch de segurança. Configuração de auto discovery e active sync para o exchange sever 2010.</p>
+
+      </div>
+	  
+	  <div class="certificate-card fade-in">
+        <img src="logos/sodiam icon.png" alt="Terraform Logo" class="certificate-logo">
+        <h3 class="certificate-name">Sodiam</h3>
+        <p class="certificate-issuer">Exportação de relatorios e manutenção de operações de políticas de backup com com o veeam</p>
+
+      </div>  	  
+	  
+	  <div class="certificate-card fade-in">
+        <img src="terraform-logo.svg" alt="Terraform Logo" class="certificate-logo">
+        <h3 class="certificate-name">UMAPE</h3>
+        <p class="certificate-issuer">Implemnetação do ambiente de telefonia Cisco Unified Communications Manager 12.5.</p>
+	
+      </div>  	  
+
+
+
+	  
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section id="experiencia" class="section">
+  <div class="container">
+    <h2 class="section-title">Experiência Profissional</h2>
+    <div class="experience-timeline">
+      <div class="timeline-item fade-in">
+
+		<h3>Consultor de Infreaestruturas e Aplicações</h3>
+        <div class="company">ITGest</div>
+        <p>Prestação de serviços, realizando análises detalhadas, planejamento e implementação de soluções com base nas necessidades específicas dos clientes. Desenvolvendo planos para melhorar ou otimizar suas infraestruturas e aplicações. Isso pode envolver a implementação de novas tecnologias, atualizações de software, migrações para a nuvem ou otimização de recursos existentes.</p>
+      </div>
+	  
+	  <div class="timeline-item fade-in">
+	  <h3>Tecnico de Informatica</h3>
+        <div class="company">Grupo Zahara</div>
+        <p>Administração do Active Directory, Exchange Server, DHCP, DNS. Corrigir problemas de configuração de servidores e estações de trabalho, definição de um plano de backup e recuperação de dados, administração de rede e outros.Atender aos tickets dos utilizadores, em muitos casos os tickets não estão relacionados a um problema, mas sim a duvidas sobre o uso de aplicações, recuperação de passwords de acesso aos sistemas, entre outras questões relacionadas as suas atividades diarias.</p>
+      </div>
+	  
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="section" style="min-height: 50vh;">
+  <div class="container">
+    <h2 class="section-title">Vamos Conversar?</h2>
+    <p style="text-align: center; margin-bottom: 2rem;">Estou sempre interessado em novos projetos e desafios.</p>
+	<p style="text-align: center; margin-bottom: 2rem;"><a href="https://api.whatsapp.com/send?phone=244924670406" target="_blank">Whatsapp</a>  <a href="https://www.linkedin.com/in/josemar-ad%C3%A3o-4068a9135/" target="_blank">LinkedIn</a></p>
+	
+    <div style="text-align: center;">
+      <a href="mailto:buguinhamix@gmail.com" class="btn">
+        <i class="fas fa-envelope"></i> Entre em Contato
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+
+
+function openModal(src) {
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("modalImage");
+  modal.style.display = "block";
+  modalImg.src = src; // Definir a imagem clicada no modal
+}
+
+function closeModal() {
+  var modal = document.getElementById("imageModal");
+  modal.style.display = "none";
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scroll para links do menu
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Animação de fade-in nos elementos
+  const observerOptions = {
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in').forEach((element) => {
+    element.style.opacity = 0;
+    element.style.transform = 'translateY(20px)';
+    element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    observer.observe(element);
+  });
+});
+</script>
+
+</body></html>
